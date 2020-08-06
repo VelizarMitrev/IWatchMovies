@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<title>The Movie Place</title>
+</head>
+<body>
+	<div class="center-block center-text">
+		<h2 class="title">IWatchMovies</h2>
+		<h3 class="title-text">Add movie</h3>
+		<form action="#" th:action="@{/add-movie}" th:object="${movie}" method="post">
+			<p>
+				Movie title: <input type="text" th:field="*{title}" />
+			</p>
+			<p>
+				Date: <input type="date" th:field="*{releaseDate}" />
+			</p>
+			<input type="submit" value="Add movie" class="medium-button"/>
+		</form>
+	</div>
+</body>
+</html>

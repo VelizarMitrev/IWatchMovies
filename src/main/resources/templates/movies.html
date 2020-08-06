@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" type="text/css" href="css/movies.css">
+<title>IWatchMovies</title>
+</head>
+<body>
+	<div class="center-block center-text">
+		<h2 id="list-of-movies-title">List of movies</h2>
+		<p th:if="${movies.empty}" id="no-movies-text">No movies available</p>
+		<table th:if="${!movies.empty}" class="center-block center-text">
+			<thead>
+				<tr>
+					<th class="table-title">Title</th>
+					<th class="table-title">Release date</th>
+            	</tr>
+			</thead>
+			<tbody>
+				<tr th:each="movie : ${movies}">
+					<td class="table-row"><span th:text="${movie.title}"></span></td>
+					<td class="table-row"><span th:text="${movie.releaseDate}"></span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
