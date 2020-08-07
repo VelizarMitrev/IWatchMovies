@@ -1,7 +1,5 @@
 package com.example.demo.movie;
 
-import java.time.LocalDate;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +24,7 @@ public class MovieController {
 	}
 	
 	@GetMapping("/add-movie")
-	public ModelAndView showAddMovieForm(ModelAndView modelAndView, @Valid Movie movie) {
+	public ModelAndView showAddMovieForm(ModelAndView modelAndView, Movie movie, BindingResult result) {
 		modelAndView.setViewName("add-movie");
 		
 		return modelAndView;
@@ -34,14 +32,14 @@ public class MovieController {
 	
 	@PostMapping("/add-movie")
 	public ModelAndView addMovie(ModelAndView modelAndView, @Valid Movie movie, BindingResult result) {
-		modelAndView.setViewName("add-movie");
+		modelAndView.setViewName("add-movie");	
         if (result.hasErrors()) {
         	System.out.println("Movie not added! " + result.getErrorCount());
             return modelAndView;
         }
-        modelAndView.setViewName("movies");
+        modelAndView.setViewName("redirect:/movies");	
         movieRepository.save(movie);
-        System.out.println("Movie added");
+        System.out.println(movie.getTitle() + " " + movie.getReleaseDate());
 		return modelAndView;
 	}
 	

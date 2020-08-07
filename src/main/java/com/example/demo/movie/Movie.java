@@ -1,13 +1,13 @@
 package com.example.demo.movie;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -17,10 +17,10 @@ public class Movie {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	
-	@NotBlank
+	@NotEmpty(message = "Title is mandatory")
 	private String title;
 	
-	@NotBlank
+	@NotNull(message = "Release date is mandatory")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate releaseDate;
 
