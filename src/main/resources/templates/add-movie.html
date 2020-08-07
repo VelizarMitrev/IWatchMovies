@@ -12,11 +12,11 @@
 		<h3 class="title-text">Add movie</h3>
 		<form action="#" th:action="@{/add-movie}" th:object="${movie}"
 			method="post">
-			<p th:if="${#fields.hasErrors('movie.title')}" class="" th:errors="*{movie.title}"></p>
+			<p th:if="${#fields.hasErrors('title')}" class="" th:errors="*{title}"></p>
 			<p>
 				Movie title: <input type="text" th:field="*{title}" />
 			</p>
-			<p th:if="${#fields.hasErrors('movie.releaseDate')}" class="" th:errors="*{movie.releaseDate}"></p>
+			<p th:if="${#fields.hasErrors('releaseDate')}" class="" th:errors="*{releaseDate}"></p>
 			<p>
 				Date: <input type="date" th:field="*{releaseDate}" />
 			</p>
